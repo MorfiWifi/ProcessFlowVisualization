@@ -1,0 +1,84 @@
+Here’s a sample Leaflet.js code to generate a simple map with three nodes (representing points on a power grid) and paths (representing grid lines between them) with labels showing voltage on each path and node names.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Grid Map</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([51.505, -0.09], 13);  // Centered on a random location
+
+        // Add a tile layer (OpenStreetMap in this case)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Define the nodes with coordinates (latitude, longitude)
+        const nodes = [
+            { name: 'Node 1', lat: 51.505, lng: -0.09, voltage: 'Low Voltage' },
+            { name: 'Node 2', lat: 51.515, lng: -0.10, voltage: 'Low Voltage' },
+            { name: 'Node 3', lat: 51.525, lng: -0.08, voltage: 'Low Voltage' }
+        ];
+
+        // Function to add nodes to the map
+        nodes.forEach(node => {
+            const marker = L.marker([node.lat, node.lng]).addTo(map);
+            marker.bindPopup(`<b>${node.name}</b><br>Voltage: ${node.voltage}`);
+            marker.bindTooltip(node.name).openTooltip();
+        });
+
+        // Function to draw lines between nodes
+        const path = [
+            [nodes[0].lat, nodes[0].lng],
+            [nodes[1].lat, nodes[1].lng],
+            [nodes[2].lat, nodes[2].lng]
+        ];
+
+        // Create a polyline (path) and style it to resemble a power grid line
+        const powerLine = L.polyline(path, {
+            color: 'red',
+            weight: 4,
+            opacity: 0.6
+        }).addTo(map);
+
+        // Add voltage labels on each segment of the path (edge)
+        for (let i = 0; i < path.length - 1; i++) {
+            const midLat = (path[i][0] + path[i + 1][0]) / 2;
+            const midLng = (path[i][1] + path[i + 1][1]) / 2;
+
+            L.marker([midLat, midLng])
+                .bindPopup(`<b>Voltage: Low Voltage</b>`)
+                .addTo(map);
+        }
+
+    </script>
+</body>
+</html>
+```
+
+![reult image of simple grid](/resources/Leaflet/images/sample-3.PNG)
+
+### Explanation:
+1. **Map Setup**: The map is centered on a random location (`51.505, -0.09`), but you can change the coordinates to whatever your grid needs.
+2. **Nodes**: Three nodes are defined with names (`Node 1`, `Node 2`, `Node 3`) and low voltage labeling.
+3. **Markers**: Each node is represented by a marker with a popup showing the name and voltage.
+4. **Paths (Power Grid Lines)**: A polyline is drawn connecting the nodes, representing a power grid line (in red). Each segment between nodes has a voltage label.
+5. **Voltage Labels**: The path segments have a popup showing "Low Voltage" (for simplicity). These labels can be modified if needed to show different voltages for each segment.
+
+Feel free to adjust coordinates and styling as needed for your use case.
