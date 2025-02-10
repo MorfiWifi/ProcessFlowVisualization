@@ -426,7 +426,7 @@ Below is a basic example of how to set up such a visualization using D3.js:
 </html>
 ```
 
-![reult image of simple grid](/resources/D3JS/images/sample-3.png)
+![reult image of simple grid](https://raw.githubusercontent.com/MorfiWifi/ProcessFlowVisualization/refs/heads/main/resources/D3JS/images/sample-3.png)
 
 ### Breakdown:
 
@@ -609,7 +609,7 @@ Here's the updated code:
 </body>
 </html>
 ```
-![reult image of simple grid](/resources/D3JS/images/sampl-4.png)
+![reult image of simple grid](https://github.com/MorfiWifi/ProcessFlowVisualization/blob/main/resources/D3JS/images/sampl-4.PNG?raw=true)
 
 ### Explanation of changes:
 1. **Leaflet integration**: I've included Leaflet's JavaScript and CSS to render the map and added an OpenStreetMap tile layer.
@@ -648,8 +648,8 @@ Grafana is an open-source platform used for monitoring, visualization, and analy
 In summary, Grafana is an essential tool for organizations that need to track, visualize, and make sense of large amounts of time-series data, helping to ensure systems are running smoothly and enabling data-driven decision-making.
 
 ---
-![reult image of simple grid](/resources/Grafana/images/sample-1.PNG)
-![reult image of simple grid](/resources/Grafana/images/sample-2.PNG)
+![reult image of simple grid](https://github.com/MorfiWifi/ProcessFlowVisualization/blob/main/resources/Grafana/images/sample-1.PNG?raw=true)
+![reult image of simple grid](https://github.com/MorfiWifi/ProcessFlowVisualization/blob/main/resources/Grafana/images/sample-2.png?raw=true)
 
 ---
 Three.js is a popular open-source JavaScript library that enables developers to create and render 3D graphics in web browsers using WebGL (Web Graphics Library). WebGL is a low-level API for rendering interactive 2D and 3D graphics, and Three.js makes it easier to work with by abstracting the complex aspects of WebGL into a more accessible API.
@@ -691,7 +691,7 @@ A typical example might be creating an interactive 3D map, where you can rotate,
 Overall, Three.js is an excellent choice for anyone looking to add 3D graphics and visualizations to their web applications. It abstracts away much of the complexity of 3D rendering, allowing developers to focus on building engaging experiences.
 
 ---
-![reult image of simple grid](/resources/ThreeJs/images/sample-1.PNG)
+![reult image of simple grid](https://github.com/MorfiWifi/ProcessFlowVisualization/blob/main/resources/ThreeJs/images/sample-1.PNG?raw=true)
 
 ---
 **Leaflet** is a lightweight, open-source JavaScript library used for creating interactive maps in web applications. It provides an easy way to integrate and display maps with various features, such as markers, pop-ups, zooming, and more, in a simple and efficient manner.
@@ -813,7 +813,7 @@ Here’s a sample Leaflet.js code to generate a simple map with three nodes (rep
 </html>
 ```
 
-![reult image of simple grid](/resources/Leaflet/images/sample-3.PNG)
+![reult image of simple grid](https://github.com/MorfiWifi/ProcessFlowVisualization/blob/main/resources/Leaflet/images/sample-3.PNG?raw=true)
 
 ### Explanation:
 1. **Map Setup**: The map is centered on a random location (`51.505, -0.09`), but you can change the coordinates to whatever your grid needs.
