@@ -1,3 +1,5 @@
+# general comparison
+
 Here’s a comparison table for the alternatives to your current approach (SVG files connected with developer effort), evaluating various options across different key aspects:
 
 | **Metric**                        | **Current Approach (SVG + Dev Effort)**                                       | **Alternative 1** (React + D3.js/Chart.js)                                   | **Alternative 2** (WebGL-based libraries: PixiJS/Three.js)                         | **Alternative 3** (Grafana/Power BI)                                       | **Alternative 4** (Leaflet for Maps + React)                               |

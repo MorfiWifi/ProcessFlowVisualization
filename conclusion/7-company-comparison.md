@@ -1,3 +1,5 @@
+# Comparison based on company metrics
+
 Here's a comparison of the mentioned tools based on the provided metrics:
 
 | **Metric**                                   | **SVG/Static Content**                              | **D3.js/Chart.js**                          | **WebGL-based libraries (PixiJS/Three.js)**     | **Grafana/Power BI**                          | **Leaflet for Maps**                          | **D3.js + Leaflet for Maps**                   |

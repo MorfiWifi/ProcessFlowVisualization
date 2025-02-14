@@ -1,3 +1,5 @@
+# ranced compariosn
+
 Based on the comparison of the provided tools, here’s a ranking based on a 100-point scale, considering factors like ease of development, flexibility, live data integration, and integration with databases:
 
 | **Tool**                       | **Ease of Initial Development** | **Ease of Modification** | **Minimum Time for Modification** | **Team Size Required** | **Flexibility with Third-Party Assets** | **Integration with Live Data** | **Integration with Database** | **Total Points** |

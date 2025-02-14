@@ -1,3 +1,5 @@
+# general metrics
+
 | **Metric**               | **Description**                                                                                                                                           | **Priority Level**  | **Reasoning**                                                                                                                                                          |
 |--------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Scalability**           | Ability to scale horizontally (adding more users or production lines) and vertically (handling more complex data) without significant performance degradation. | High                | Your system needs to accommodate large data volumes and numerous real-time updates from multiple sources (production lines, trucks, storage).                          |

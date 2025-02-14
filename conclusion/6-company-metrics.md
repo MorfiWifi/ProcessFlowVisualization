@@ -1,3 +1,5 @@
+# company metrics
+
 Here’s a detailed breakdown of the **metrics** your team should consider for building an interactive dashboard and control system for a production line. Each metric is explained, and a table is provided for easy reference.
 
 ---

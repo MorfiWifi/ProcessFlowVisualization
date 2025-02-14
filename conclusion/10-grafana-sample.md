@@ -1,3 +1,5 @@
+# Grafana
+
 Grafana is an open-source platform used for monitoring, visualization, and analysis of time-series data. It provides a powerful, flexible interface for creating dashboards that can display real-time metrics and logs, making it widely used for monitoring applications, infrastructure, and business metrics.
 
 ### Key Features of Grafana:

@@ -1,3 +1,5 @@
+# problem defenation
+
 ## Real-time Company Overview Schematic for Software Engineers
 
 As software engineers in a large manufacturing company with multiple production lines, raw material piles, storage, and internal transportation (automated and manual), we need a single-view schematic providing real-time insights into operations.  We already have software for maintenance, production, and raw material management.  Our goal is to integrate these systems into a unified dashboard.
