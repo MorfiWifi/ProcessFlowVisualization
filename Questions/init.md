@@ -3,4 +3,4 @@
 2- doses entity framework and C# support graph table (sql server graph) ? how much dose it make conversion easier ? how different queries are from traditional and graph ? 
 3- compare in depth how sql server graph store/restores data , why we see json object s in management studio , how index work in this era , is there views ? give me simple example for each.
 4- compare benchmarks on sql server graph and other well known graph databases in terms of performance 
-5- 
+5- assume we have asp.net application using traditional sql server assume we have complicate routes between company sections and goods are transferred throw them and each has it's own delay and cost now should we replace our old design with sql server graph table or considering using graph along side with traditional system ?  
