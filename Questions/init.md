@@ -1,1 +1,2 @@
-what is microsoft sqlserver graph table (database) how different from traditional table considering performance and complexity , generate table of where conditions when to use and not use graph table and finally where is microsoft graph table production ready ?
+0- what is microsoft sqlserver graph table (database) how different from traditional table considering performance and complexity , generate table of where conditions when to use and not use graph table and finally where is microsoft graph table production ready ?
+1- Is it possible to convert traditional  table into graph without any extra effort ? or special conidiation should  be taken into account ?
