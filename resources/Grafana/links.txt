@@ -1,1 +1,0 @@
-https://blog.networkprofile.org/power-monitoring-setup-iotawatt-grafana/

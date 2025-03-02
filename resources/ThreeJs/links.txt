@@ -1,1 +1,0 @@
-https://data.geus.dk/geoterm/get_3d.jsp?bbox=495279,6285705,525905,6316331#scaling=15.3&camx=98&camy=164&camz=211&layers=dtm,KalkGruppen_TopDybde,iso60&bbox=495279,6285628.435,525905,6316407.565
