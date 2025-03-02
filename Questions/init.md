@@ -4,3 +4,5 @@
 3- compare in depth how sql server graph store/restores data , why we see json object s in management studio , how index work in this era , is there views ? give me simple example for each.
 4- compare benchmarks on sql server graph and other well known graph databases in terms of performance 
 5- assume we have asp.net application using traditional sql server assume we have complicate routes between company sections and goods are transferred throw them and each has it's own delay and cost now should we replace our old design with sql server graph table or considering using graph along side with traditional system ?  
+6- assume we have networking grid and we have some node and each edge (line) has bandwidth limitation and minimum delay now design grid using sql server graph table and find best route from Node A to Node Z while we modify edges (disable or remove them) write SQL code + comments
+7- 
