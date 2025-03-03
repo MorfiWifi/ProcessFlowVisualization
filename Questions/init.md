@@ -23,3 +23,5 @@ CREATE TABLE Satelite (
     NodeName NVARCHAR(50) NOT NULL -- Name of the node (e.g., "Node A")
 ) AS NODE; -- Marks this table as a node table in SQL Server Graph
 11- give me deep detail on Edge constraints as table different constraints / reasons / usability / limitation and brief summary and example for each 
+12- dose Sql server SHORTEST_PATH can calculate base on property (cost) instead of number of edges ?
+13- Real Implemented Example
