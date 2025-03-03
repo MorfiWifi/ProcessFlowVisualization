@@ -26,3 +26,4 @@ CREATE TABLE Satelite (
 12- dose Sql server SHORTEST_PATH can calculate base on property (cost) instead of number of edges ?
 13- Real Implemented Example , non Grapg searchs 
 14- Give me top well-known problems to be solved using Graph Evaluation and searches considering industrial use case 
+15- list me Top well-known dotnet libraries to solve Graph Problems that can help solving these kind of problems
