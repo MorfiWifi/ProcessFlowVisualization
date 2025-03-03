@@ -22,3 +22,4 @@ CREATE TABLE Satelite (
     NodeID INT PRIMARY KEY, -- Unique identifier for each node
     NodeName NVARCHAR(50) NOT NULL -- Name of the node (e.g., "Node A")
 ) AS NODE; -- Marks this table as a node table in SQL Server Graph
+11- give me deep detail on Edge constraints as table different constraints / reasons / usability / limitation and brief summary and example for each 

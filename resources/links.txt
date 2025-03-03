@@ -1,0 +1,6 @@
+1. SQL Graph Architecture
+https://learn.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-architecture?view=sql-server-ver16
+2. SHORTEST_PATH (Transact-SQL)
+https://learn.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-shortest-path?view=sql-server-ver16
+3. Edge constraints
+https://learn.microsoft.com/en-us/sql/relational-databases/tables/graph-edge-constraints?view=sql-server-ver16
