@@ -5,8 +5,8 @@
 4- compare benchmarks on sql server graph and other well known graph databases in terms of performance 
 5- assume we have asp.net application using traditional sql server assume we have complicate routes between company sections and goods are transferred throw them and each has it's own delay and cost now should we replace our old design with sql server graph table or considering using graph along side with traditional system ?  
 6- assume we have networking grid and we have some node and each edge (line) has bandwidth limitation and minimum delay now design grid using sql server graph table and find best route from Node A to Node Z while we modify edges (disable or remove them) write SQL code + comments
-7- -
-8- -
+7- -In SQL Server, there is no built-in shortest path algorithm like Dijkstra’s or A* directly within T-SQL. However, if you are using SQL Server 2017+, you can utilize Graph Tables and recursive queries to find the shortest path
+8-  detailed comparison between SQL Server Graph Tables and other Graph-Based Approaches (Neo4j, PostgreSQL pgRouting, and traditional relational databases with recursive queries)
 9- Summarize and give me Sql server SQL Graph Architecture
 10- example What is SHORTEST_PATH  function in Sql server and how to use it ? write example for finding shortest path between two statelets using following table structure 
 CREATE TABLE Link (
