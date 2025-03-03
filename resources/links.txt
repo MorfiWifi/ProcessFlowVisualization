@@ -4,3 +4,9 @@ https://learn.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-arch
 https://learn.microsoft.com/en-us/sql/relational-databases/graphs/sql-graph-shortest-path?view=sql-server-ver16
 3. Edge constraints
 https://learn.microsoft.com/en-us/sql/relational-databases/tables/graph-edge-constraints?view=sql-server-ver16
+
+4. Sql Recursive CTE Performance Discuss
+https://stackoverflow.com/questions/43454434/slow-performance-with-recursive-sql-cte?utm_source=chatgpt.com
+
+5. Dijkstra's Algorithm in C# 
+https://andrewlock.net/implementing-dijkstras-algorithm-for-finding-the-shortest-path-between-two-nodes-using-priorityqueue-in-dotnet-9/?utm_source=chatgpt.com

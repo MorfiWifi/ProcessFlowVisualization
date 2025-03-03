@@ -1,5 +1,5 @@
 #### **1. Introduction to SQL Server Graph Tables**
-- **0. What is Microsoft SQL Server Graph Table?**  
+- **What is Microsoft SQL Server Graph Table?**  
   - Differences from traditional tables in terms of performance and complexity.  
   - Table of conditions: When to use and when not to use graph tables.  
   - Is Microsoft Graph Table production-ready?  
@@ -18,59 +18,59 @@
 ---
 
 #### **3. Technical Deep Dive: Storage, Indexing, and Queries**
-- **3. How SQL Server Graph Stores and Restores Data**  
+- **How SQL Server Graph Stores and Restores Data**  
   - Why JSON objects appear in Management Studio.  
   - How indexing works in graph tables.  
   - Are there views?  
   - Simple examples for each.  
 
-- **10. Understanding the SHORTEST_PATH Function in SQL Server**  
+- **Understanding the SHORTEST_PATH Function in SQL Server**  
   - Example: Finding the shortest path between two nodes using a sample table structure.  
 
-- **11. Edge Constraints in SQL Server Graph Tables**  
+- **Edge Constraints in SQL Server Graph Tables**  
   - Detailed explanation of constraints, reasons, usability, and limitations.  
   - Brief summary and examples for each.  
 
-- **12. Can SQL Server SHORTEST_PATH Calculate Based on Property (Cost)?**  
+- **Can SQL Server SHORTEST_PATH Calculate Based on Property (Cost)?**  
   - Exploring whether the function can use edge properties (e.g., cost) instead of the number of edges.  
 
 ---
 
 #### **4. Performance and Benchmarks**
-- **4. Benchmark Comparisons: SQL Server Graph vs. Other Graph Databases**  
+- **Benchmark Comparisons: SQL Server Graph vs. Other Graph Databases**  
   - Performance comparisons with Neo4j, PostgreSQL pgRouting, and others.  
 
-- **8. Detailed Comparison: SQL Server Graph Tables vs. Other Graph-Based Approaches**  
+- **Detailed Comparison: SQL Server Graph Tables vs. Other Graph-Based Approaches**  
   - Neo4j, PostgreSQL pgRouting, and traditional relational databases with recursive queries.  
 
 ---
 
 #### **5. Practical Use Cases and Implementation**
-- **5. Should You Replace Traditional SQL Server with Graph Tables?**  
+- **Should You Replace Traditional SQL Server with Graph Tables?**  
   - Case study: ASP.NET application with complex routing between company sections.  
   - Should you replace or use graph tables alongside traditional systems?  
 
-- **6. Designing a Networking Grid with SQL Server Graph Tables**  
+- **Designing a Networking Grid with SQL Server Graph Tables**  
   - Example: Finding the best route from Node A to Node Z with edge modifications.  
   - SQL code with comments.  
 
-- **7. Finding the Shortest Path in SQL Server Without Built-in Algorithms**  
+- **Finding the Shortest Path in SQL Server Without Built-in Algorithms**  
   - Using recursive queries with graph tables (SQL Server 2017+).  
 
-- **14. Top Industrial Use Cases for Graph Evaluation and Searches**  .  
+- **Top Industrial Use Cases for Graph Evaluation and Searches**  .  
 
   - Well-known problems solved using graph-based approaches
 ---
 
 #### **6. Advanced Topics and Libraries**
-- **9. SQL Server Graph Architecture: A Summary**  
+- **SQL Server Graph Architecture: A Summary**  
   - Overview of the architecture and key components.  
 
-- **13. Real-World Implementations and Comparisons**  
+- **Real-World Implementations and Comparisons**  
   - Non-graph search examples.  
   - C# implementation versions and code comparisons.  
 
-- **15. Top .NET Libraries for Solving Graph Problems**  
+- **Top .NET Libraries for Solving Graph Problems**  
   - List of well-known libraries to help solve graph-related problems.  
 
 ---
@@ -142,10 +142,12 @@ INSERT INTO Users (UserID, UserName) VALUES (2, 'Bob');
 INSERT INTO Posts (PostID, Content) VALUES (1, 'Hello World');
 
 INSERT INTO Follows ($from_id, $to_id, FollowDate)
-VALUES ((SELECT $node_id FROM Users WHERE UserID = 1), (SELECT $node_id FROM Users WHERE UserID = 2), GETDATE());
+VALUES ((SELECT $node_id FROM Users WHERE UserID = 1), 
+(SELECT $node_id FROM Users WHERE UserID = 2), GETDATE());
 
 INSERT INTO Likes ($from_id, $to_id, LikeDate)
-VALUES ((SELECT $node_id FROM Users WHERE UserID = 2), (SELECT $node_id FROM Posts WHERE PostID = 1), GETDATE());
+VALUES ((SELECT $node_id FROM Users WHERE UserID = 2), 
+(SELECT $node_id FROM Posts WHERE PostID = 1), GETDATE());
 
 -- Query to find who liked Alice's posts
 SELECT U.UserName
@@ -250,7 +252,9 @@ Converting a traditional table into a graph table in **Microsoft SQL Server** is
      SELECT u.UserName
      FROM TraditionalUsersTable u
      JOIN TraditionalFollowsTable f ON u.UserID = f.FollowedID
-     WHERE f.FollowerID = (SELECT UserID FROM TraditionalUsersTable WHERE UserName = 'Alice');
+     WHERE f.FollowerID = 
+     (SELECT UserID FROM TraditionalUsersTable 
+        WHERE UserName = 'Alice');
 
      -- Graph query (using MATCH)
      SELECT u.UserName
@@ -514,6 +518,7 @@ When working with graph tables in SSMS, you may notice JSON-like objects in the 
 SELECT * FROM Users;
 ```
 **Output:**
+
 | $node_id                              | UserID | UserName |
 |---------------------------------------|--------|----------|
 | {"type":"node","schema":"dbo","table":"Users","id":0} | 1      | Alice    |
@@ -666,7 +671,8 @@ CREATE TABLE Link (
     EdgeID INT PRIMARY KEY, -- Unique identifier for each edge
     Bandwidth INT NOT NULL, -- Bandwidth limitation of the edge
     Delay INT NOT NULL, -- Minimum delay of the edge
-    IsActive BIT NOT NULL DEFAULT 1 -- Indicates if the edge is active (1) or disabled (0)
+    IsActive BIT NOT NULL DEFAULT 1 
+    -- Indicates if the edge is active (1) or disabled (0)
 ) AS EDGE; -- Marks this table as an edge table in SQL Server Graph
 
 CREATE TABLE Satelite (
@@ -1707,7 +1713,7 @@ SQL Server SQL Graph Architecture is a feature introduced in SQL Server 2017 tha
 ---
 
 ### **7. Limitations**
-- No native support for advanced graph algorithms (e.g., shortest path, PageRank).
+- No native support for advanced graph algorithms (e.g., PageRank).
 - Limited to basic graph traversal and pattern matching.
 
 ---
@@ -1780,6 +1786,119 @@ The following links are inserted into the `Link` table:
 ## Shortest Path Calculation
 
 The script calculates the shortest path from `Ero-1` to `DEST` using the following steps:
+
+```SQL
+create table Link(
+	EdgeId int primary key ,
+	Bandwidth int not null ,
+	Delay int not null ,
+	IsActive bit not null default 1 
+) as Edge;
+
+create Table Satelite (
+	NodeId int primary key ,
+	NodeName nvarchar(50) not null
+) as Node;
+
+Insert into Satelite (NodeId , NodeName) values
+(1 , 'Ero-1'),
+(2 , 'Asia-1'),
+(3 , 'Ero-2'),
+(4 , 'Ws-54'),
+(5 , 'DEST');
+
+
+-- using shortest Path Function 
+
+insert into Link(EdgeId ,$from_id , $to_id , Bandwidth , Delay) Values
+-- Ero-1 -> Asia-1
+(1 , (select $node_id from Satelite where NodeId = 1) ,
+(select $node_id from Satelite where NodeId = 2),
+100 , 10),
+
+-- Ero-1 ->  Ero-2
+(2 , (select $node_id from Satelite where NodeId = 1) ,
+(select $node_id from Satelite where NodeId = 3),
+200 , 5),
+
+-- Asia-1 ->  Ws-54
+(3 , (select $node_id from Satelite where NodeId = 2) ,
+(select $node_id from Satelite where NodeId = 4),
+150 , 8),
+
+-- Ero-2 -> Ws-54
+(4 , (select $node_id from Satelite where NodeId = 3) ,
+(select $node_id from Satelite where NodeId = 4),
+300 , 6),
+
+-- Ws-54 -> DEST
+(5 , (select $node_id from Satelite where NodeId = 4) ,
+(select $node_id from Satelite where NodeId = 5),
+250 , 7),
+
+-- Ero-1 -> DEST
+(6 , (select $node_id from Satelite where NodeId = 1) ,
+(select $node_id from Satelite where NodeId = 5),
+20 , 180);
+
+
+
+update Link set IsActive = 0  where EdgeId = 6;
+
+select StartNode ,Route , LastNode , TotalDelay , Bandwidth  from  (
+	select 
+		s1.NodeName as StartNode , 
+		STRING_AGG(s2.NodeName , '->') 
+		within group (GRAPH PATH) as Route,
+		
+		LAST_VALUE(s2.NodeName) 
+		within group (GRAPH PATH) as LastNode,
+		
+		Sum(l.Delay) 
+		within group (GRAPH PATH) as TotalDelay, -- total delay
+		Min(l.Bandwidth) 
+		within group (GRAPH PATH) as Bandwidth -- emmerged bandwidth 
+	FROM
+		Satelite as s1,
+		(select * from Link where IsActive = 1 ) FOR PATH as l  ,
+		Satelite FOR PATH as s2
+	WHERE MATCH(SHORTEST_PATH(s1(-(l)->s2)+))
+	AND s1.NodeName = 'Ero-1'
+)AS Q
+where Q.LastNode = 'DEST'
+
+-- Ero-1	Asia-1->Ws-54->DEST	DEST	25	100
+
+
+update Link set IsActive = 1  where EdgeId = 6;
+
+select StartNode ,Route , LastNode , TotalDelay , Bandwidth  from  (
+	select 
+		s1.NodeName as StartNode , 
+		
+		STRING_AGG(s2.NodeName , '->') 
+		within group (GRAPH PATH) as Route,
+		
+		LAST_VALUE(s2.NodeName) 
+		within group (GRAPH PATH) as LastNode,
+		
+		Sum(l.Delay) 
+		within group (GRAPH PATH) as TotalDelay, -- total delay
+		
+		Min(l.Bandwidth) 
+		within group (GRAPH PATH) as Bandwidth -- emmerged bandwidth 
+	FROM
+		Satelite as s1,
+		(select * from Link where IsActive = 1 ) FOR PATH as l  ,
+		Satelite FOR PATH as s2
+	WHERE MATCH(SHORTEST_PATH(s1(-(l)->s2)+))
+	AND s1.NodeName = 'Ero-1'
+)AS Q
+where Q.LastNode = 'DEST'
+
+-- Ero-1	DEST	DEST	180	20
+```
+
 
 ### 1. Deactivate a Link
 The link with `EdgeId = 6` (direct connection from `Ero-1` to `DEST`) is deactivated by setting `IsActive = 0`.
@@ -2292,19 +2411,10 @@ When working with graph problems in .NET, there are several well-known libraries
    - **GitHub**: [MSAGL](https://github.com/Microsoft/automatic-graph-layout)
    - **NuGet**: `Microsoft.MSAGL`
 
----
-
-### 4. **ILGPU.Algorithms**
-   - **Description**: While not exclusively a graph library, ILGPU.Algorithms provides GPU-accelerated algorithms that can be used to solve graph problems efficiently, such as shortest path or graph traversal.
-   - **Features**:
-     - GPU-accelerated graph algorithms.
-     - High-performance computing for large-scale graphs.
-   - **GitHub**: [ILGPU](https://github.com/m4rs-mt/ILGPU)
-   - **NuGet**: `ILGPU.Algorithms`
 
 ---
 
-### 5. **YaccConstructor**
+### 4. **YaccConstructor**
    - **Description**: YaccConstructor is a collection of libraries for working with graphs, parsers, and formal languages. It includes tools for graph analysis and manipulation.
    - **Features**:
      - Graph parsing and transformation.
@@ -2313,25 +2423,8 @@ When working with graph problems in .NET, there are several well-known libraries
 
 ---
 
-### 6. **Shoal**
-   - **Description**: Shoal is a lightweight library for graph manipulation and analysis. It is designed for simplicity and ease of use.
-   - **Features**:
-     - Basic graph operations (add/remove nodes/edges).
-     - Graph traversal algorithms.
-   - **GitHub**: [Shoal](https://github.com/shoal/shoal)
 
----
-
-### 7. **Agiil**
-   - **Description**: Agiil is a library for working with directed graphs and dependency resolution. It is useful for solving problems like topological sorting and dependency graphs.
-   - **Features**:
-     - Dependency resolution.
-     - Topological sorting.
-   - **GitHub**: [Agiil](https://github.com/agiil/agiil)
-
----
-
-### 8. **Neo4j .NET Driver**
+### 5. **Neo4j .NET Driver**
    - **Description**: If you're working with graph databases, the Neo4j .NET driver allows you to interact with Neo4j, a popular graph database, and perform graph queries using Cypher.
    - **Features**:
      - Query graph databases using Cypher.
@@ -2340,7 +2433,7 @@ When working with graph problems in .NET, there are several well-known libraries
 
 ---
 
-### 9. **LightGraphs.jl (via .NET Interop)**
+### 6. **LightGraphs.jl (via .NET Interop)**
    - **Description**: While not a native .NET library, LightGraphs.jl (a Julia library) can be used via .NET interop for advanced graph analysis and algorithms.
    - **Features**:
      - Advanced graph algorithms.
@@ -2349,7 +2442,7 @@ When working with graph problems in .NET, there are several well-known libraries
 
 ---
 
-### 10. **Custom Implementations**
+### 7. **Custom Implementations**
    - If your graph problem is specific or performance-critical, you can implement custom graph structures and algorithms using .NET's built-in data structures like `Dictionary`, `HashSet`, or `List`.
 
 ---
