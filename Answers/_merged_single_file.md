@@ -1772,6 +1772,11 @@ The following links are inserted into the `Link` table:
 
 ---
 
+## visualization of Grapg
+
+![Graph Visual](https://raw.githubusercontent.com/MorfiWifi/ProcessFlowVisualization/refs/heads/25-03-Graph-SqlServer/resources/images/Mermind%20Capture.PNG)
+
+
 ## Shortest Path Calculation
 
 The script calculates the shortest path from `Ero-1` to `DEST` using the following steps:
