@@ -1,5 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
 SQL Server SQL Graph Architecture is a feature introduced in SQL Server 2017 that allows you to model and query graph data structures directly within the relational database. Here's a summary of its key components and architecture:
 
 ---

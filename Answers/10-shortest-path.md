@@ -1,5 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
 The `SHORTEST_PATH` function in SQL Server is used to find the shortest path between two nodes in a graph. It is part of SQL Server's graph database capabilities and allows you to traverse the graph by specifying the start and end nodes, as well as the conditions for traversal.
 
 ### **How to Use `SHORTEST_PATH`**

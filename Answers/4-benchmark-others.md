@@ -1,5 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
 When comparing **Microsoft SQL Server Graph** with other well-known graph databases in terms of performance, it's important to consider the specific use cases, data models, and query types. Below is a detailed comparison of SQL Server Graph with other popular graph databases like **Neo4j**, **Amazon Neptune**, and **ArangoDB**. I'll also discuss benchmarks and performance considerations.
 
 ---

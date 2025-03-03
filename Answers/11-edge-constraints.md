@@ -1,5 +1,3 @@
-(Due to technical issues, the search service is temporarily unavailable.)
-
 In SQL Server's **Graph Database** feature, **Edge Tables** are used to define relationships between **Node Tables**. Edge tables can have constraints to enforce rules on how nodes are connected, ensure data integrity, and optimize query performance. Below is a detailed breakdown of **Edge Constraints**, including their **reasons**, **usability**, **limitations**, and examples.
 
 ---
